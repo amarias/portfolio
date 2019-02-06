@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- CSS Styles Sheets-->
+  <link href="styles/reset.css" rel="stylesheet" type="text/css">
+  <link href="styles/style.css" rel="stylesheet" type="text/css">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet">
+
+  <!-- Favicon -->
+  <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+  <link rel="manifest" href="images/site.webmanifest">
+  <link rel="mask-icon" href="images/safari-pinned-tab.svg" color="#81b083">
+  <meta name="msapplication-TileColor" content="#00a300">
+  <meta name="theme-color" content="#333333">
+
+  <title>Allison Marias</title>
+</head>
+
+
+
+<body class="--light">
+
+  <!-- Header -->
+  <header class="header header--layout">
+
+    <button class="theme-checkbox">
+      <span>am<span class="is-blinking"> : </span></span>pm
+    </button>
+
+    <div class="header__menu-icon"></div>
+
+    <nav class="header__nav">
+      <ul class="nav__list">
+        <li class="header__link"><a class="link" href="index.html">Home</a></li>
+        <li class="header__link"><a class="link link--is-selected" href="projects.html">Projects</a></li>
+        <li class="header__link"><a class="link" href="about.html">About</a></li>
+      </ul>
+    </nav>
+
+  </header>
+
+
+  <main id="barba-wrapper">
+    <div class="projects --flex-layout-center barba-container">
+
+      <button class="arrow projects__arrow secondary-btn arrow--align-left arrow--is-disabled">&lt;</button>
+
+
+      <article class="project-card projects__portfolio">
+
+        <div class="title projects__title border">
+          <p class="sub-title on-hover">I</p>
+          <p class="h1--my-initials on-hover">AM</p>
+          <h2 class="sub-title on-hover">A Web Developer</h2>
+          <!--<img class="title__img is-hidden" src="images/violin-tuner.jpg" alt=""/>-->
+          <video class="title__img is-hidden" autoplay loop>
+            <source src="images/violin-tuner.mp4" type="video/mp4">
+          </video>
+        </div>
+
+        <a class="link project-card__link primary-btn" href="portfolio.html">View Project</a>
+
+      </article>
+
+
+      <article class="project-card projects__music-web-app is-hidden">
+
+        <div class="title projects__title border">
+          <p class="sub-title on-hover">I</p>
+          <p class="h1--my-initials on-hover">AM</p>
+          <h2 class="sub-title on-hover">A Music Lover</h2>
+          <video class="title__img is-hidden" autoplay loop>
+            <source src="images/music-web-app.webm" type="video/webm">
+          </video>
+        </div>
+
+        <a class="link project-card__link primary-btn" href="music-app.html">View Project</a>
+
+      </article>
+
+
+      <article class="project-card projects__violin-tuner is-hidden">
+
+        <div class="title projects__title border">
+          <p class="sub-title on-hover">I</p>
+          <p class="h1--my-initials on-hover">AM</p>
+          <h2 class="sub-title on-hover">A Problem Solver</h2>
+          <img class="title__img is-hidden" src="images/violin-tuner.jpg" alt="" />
+        </div>
+
+        <a class="link project-card__link primary-btn" href="violin-tuner.html">View Project</a>
+
+      </article>
+
+
+      <button class="arrow projects__arrow secondary-btn arrow--align-right">&gt;</button>
+
+    </div>
+  </main>
+
+
+  <!-- JS Scripts -->
+  <script src="scripts/barba.min.js"></script>
+  <script src="scripts/main.js"></script>
+
+</body>
+
+</html>
