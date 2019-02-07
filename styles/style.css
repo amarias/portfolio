@@ -450,12 +450,12 @@ button {
 }
 
 .about-card__contact {
-  /*background-image: url(../images/contact.png);*/
-  /*color: #545454;
-  font-size: 1.6rem;
-  line-height: 1.6rem;*/
+  background-image: url(../images/contact-left.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: left;
   width: 80%;
-  padding: 3rem 0;
+  padding: 4.5rem 0;
   margin-top: 3rem;
   border-color: #777;
   border-top-style: solid;
@@ -607,11 +607,12 @@ a:hover:not(.project-info__arrow) {
   }
 
   .about-card__contact {
-    font-size: 1.6rem;
-    line-height: 1.6rem;
+    background-image: url(../images/contact-center.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
     width: 80%;
-    padding: 4rem 0;
-    margin-top: 1rem;
+    margin-top: 2.5rem;
     border-top-style: solid;
     border-top-width: 0.2rem;
   }
@@ -1045,7 +1046,7 @@ body.--dark, .--dark .h1--my-initials {
 }
 
 .--dark .about-card__contact {
-  color: #aaa;
+  background-image: url(../images/contact-left-dark.png);
 }
 
 .--dark .project-info__img {
@@ -1092,5 +1093,9 @@ body.--dark, .--dark .h1--my-initials {
   .--dark .secondary-btn:hover {
     background-color: transparent;
     color: inherit;
+  }
+
+  .--dark .about-card__contact {
+    background-image: url(../images/contact-center-dark.png);
   }
 }
