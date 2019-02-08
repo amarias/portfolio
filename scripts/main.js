@@ -28,7 +28,7 @@ let compressTransition = Barba.BaseTransition.extend({
   },
 
   isCompressing: function() {
-    let h1MyInitialsSpan = this.newContainer.querySelector(".h1--my-initial span");
+    let h1MyInitialsSpan = this.oldContainer.querySelector(".h1--my-initial span");
     h1MyInitialsSpan.classList.add("title--is-compressing");
     this.done();
   }
@@ -37,7 +37,7 @@ let compressTransition = Barba.BaseTransition.extend({
 let expandTransition = Barba.BaseTransition.extend({
   start: function() {
 
-    Promise.all([this.newContainerLoading, this.isExpanding()]).catch(error => console.log(error));
+    this.newContainerLoading.then(this.isExpanding.bind(this)).catch(error => console.log(error));
   },
 
   isExpanding: function() {
@@ -54,7 +54,7 @@ let slideUpTransition = Barba.BaseTransition.extend({
   },
 
   isSlidingUp: function() {
-    let h1MyInitialsSpan = this.newContainer.querySelector(".h1--my-initial");
+    let h1MyInitialsSpan = this.oldContainer.querySelector(".h1--my-initial");
     h1MyInitialsSpan.classList.add("title--is-sliding-up");
     this.done();
   }
@@ -67,7 +67,7 @@ let slideDownTransition = Barba.BaseTransition.extend({
   },
 
   isSlidingDown: function() {
-    let h1MyInitialsSpan = this.newContainer.querySelector(".h1--my-initial");
+    let h1MyInitialsSpan = document.body.querySelector(".h1--my-initial");
     h1MyInitialsSpan.classList.add("title--is-sliding-down");
     this.done();
   }
@@ -75,26 +75,23 @@ let slideDownTransition = Barba.BaseTransition.extend({
 
 Barba.Pjax.getTransition = function() {
 
-  let currentPage = Barba.BaseTransition.extend().oldContainer;
-  let newPage = Barba.BaseTransition.extend().newContainer;
+  let currentPage = Barba.BaseTransition.extend().oldContainer.className;
+  let newPage = Barba.BaseTransition.extend().newContainer.className;
 
   switch (currentPage) {
-    case "projectInfo":
-      return slideDownTransition;
     case "home":
     case "about":
-      if (newPage.className === "projects") {
+      if (newPage === "projects") {
         return compressTransition;
       }
       return compressExpandTransition;
     case "projects":
-      if (newPage.className === "projectInfo") {
+      if (newPage === "projectInfo") {
         return slideUpTransition;
       }
       return expandTransition;
     default:
-      console.log("Current Page Not Found");
-      break;
+      return slideDownTransition;
   }
 };
 
