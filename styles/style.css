@@ -518,6 +518,22 @@ button {
   z-index: 5;
 }
 
+.title--is-compressing {
+  animation: isCompressing 1s;
+}
+
+.title--is-expanding {
+  animation: isExpanding 1s;
+}
+
+.title--is-sliding-up {
+  animation: isSlidingUp 1s;
+}
+
+.title--is-sliding-down {
+  animation: isSlidingDown 1s;
+}
+
 .link--is-selected {
   color: #4da64a;
   border-bottom: 0.2rem solid #4da64a;
@@ -987,6 +1003,18 @@ a:hover:not(.project-info__arrow) {
   50% { opacity: 0; }
 }
 
+@keyframes isCompressing {
+  to { font-size: 0; }
+}
+
+@keyframes isExpanding {
+  from { font-size: 0;}
+  to { font-size: 3.8; }
+}
+
+@keyframes isSlidingDown {
+
+}
 
 /* ================= */
 /* ===== Theme ===== */

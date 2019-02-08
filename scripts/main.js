@@ -1,5 +1,106 @@
 /* ===== Page Transitions ===== */
-//Barba.Pjax.start();
+
+let compressExpandTransition = Barba.BaseTransition.extend({
+  start: function() {
+
+    Promise.all([this.newContainerLoading, this.isCompressing()])
+      .then(this.isExpanding.bind(this))
+      .catch(error => console.log(error));
+  },
+
+  isCompressing: function() {
+    let h1MyInitialsSpan = this.oldContainer.querySelector(".h1--my-initial span");
+    h1MyInitialsSpan.classList.add("title--is-compressing");
+    return;
+  },
+
+  isExpanding: function() {
+    let h1MyInitialsSpan = this.newContainer.querySelector(".h1--my-initial span");
+    h1MyInitialsSpan.classList.add("title--is-expanding");
+    this.done();
+  }
+});
+
+let compressTransition = Barba.BaseTransition.extend({
+  start: function() {
+
+    Promise.all([this.newContainerLoading, this.isCompressing()]).catch(error => console.log(error));
+  },
+
+  isCompressing: function() {
+    let h1MyInitialsSpan = this.newContainer.querySelector(".h1--my-initial span");
+    h1MyInitialsSpan.classList.add("title--is-compressing");
+    this.done();
+  }
+});
+
+let expandTransition = Barba.BaseTransition.extend({
+  start: function() {
+
+    Promise.all([this.newContainerLoading, this.isExpanding()]).catch(error => console.log(error));
+  },
+
+  isExpanding: function() {
+    let h1MyInitialsSpan = this.newContainer.querySelector(".h1--my-initial span");
+    h1MyInitialsSpan.classList.add("title--is-expanding");
+    this.done();
+  }
+});
+
+let slideUpTransition = Barba.BaseTransition.extend({
+  start: function() {
+
+    Promise.all([this.newContainerLoading, this.isSlidingUp()]).catch(error => console.log(error));
+  },
+
+  isSlidingUp: function() {
+    let h1MyInitialsSpan = this.newContainer.querySelector(".h1--my-initial");
+    h1MyInitialsSpan.classList.add("title--is-sliding-up");
+    this.done();
+  }
+});
+
+let slideDownTransition = Barba.BaseTransition.extend({
+  start: function() {
+
+    Promise.all([this.newContainerLoading, this.isSlidingDown()]).catch(error => console.log(error));
+  },
+
+  isSlidingDown: function() {
+    let h1MyInitialsSpan = this.newContainer.querySelector(".h1--my-initial");
+    h1MyInitialsSpan.classList.add("title--is-sliding-down");
+    this.done();
+  }
+});
+
+Barba.Pjax.getTransition = function() {
+
+  let currentPage = Barba.BaseTransition.extend().oldContainer;
+  let newPage = Barba.BaseTransition.extend().newContainer;
+
+  switch (currentPage) {
+    case "projectInfo":
+      return slideDownTransition;
+    case "home":
+    case "about":
+      if (newPage.className === "projects") {
+        return compressTransition;
+      }
+      return compressExpandTransition;
+    case "projects":
+      if (newPage.className === "projectInfo") {
+        return slideUpTransition;
+      }
+      return expandTransition;
+    default:
+      console.log("Current Page Not Found");
+      break;
+  }
+};
+
+// Initialize transitions
+Barba.Pjax.start();
+
 
 /* ===== Global Variables ===== */
 
@@ -40,7 +141,7 @@ if (headerMenuIcon[0] != undefined) {
   headerMenuIcon[0].addEventListener("click", handleMenu);
 }
 
-if(themeCheckbox != undefined) {
+if (themeCheckbox != undefined) {
   themeCheckbox.addEventListener("click", changeTheme);
 }
 
@@ -111,7 +212,9 @@ function handleMenu() {
     headerNav.classList.replace("is-fading-in", "is-fading-out");
 
     this.classList.remove("header__exit-icon");
-    setTimeout(function() { headerNav.classList.remove("menu--is-visible") }, 500);
+    setTimeout(function() {
+      headerNav.classList.remove("menu--is-visible")
+    }, 500);
 
   } else {
 
@@ -126,13 +229,14 @@ function handleMenu() {
   }
 }
 
-function setTheme(){
+function setTheme() {
   let newTheme = sessionStorage.getItem("theme");
   let bodyEl = document.getElementsByTagName("body")[0];
   let currentTheme = bodyEl.className;
 
   switch (newTheme) {
-    case null: case currentTheme:
+    case null:
+    case currentTheme:
       sessionStorage.setItem("theme", currentTheme);
       break;
     default:
@@ -141,8 +245,8 @@ function setTheme(){
   }
 }
 
-function changeTheme(){
-  if(sessionStorage.getItem("theme") === "--light"){
+function changeTheme() {
+  if (sessionStorage.getItem("theme") === "--light") {
     sessionStorage.setItem("theme", "--dark");
   } else {
     sessionStorage.setItem("theme", "--light");
@@ -152,5 +256,7 @@ function changeTheme(){
 
   let bodyEl = document.getElementsByTagName("body")[0];
   bodyEl.classList.add("is-fading-in");
-  setTimeout(function() { bodyEl.classList.remove("is-fading-in") }, 1000);
+  setTimeout(function() {
+    bodyEl.classList.remove("is-fading-in")
+  }, 1000);
 }
