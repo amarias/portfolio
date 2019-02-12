@@ -5,9 +5,21 @@
 var home = Barba.BaseView.extend({
   namespace: 'home',
   onEnter: function() {
+    // Remove mobile header menu
+    let headerMenuIcon = document.getElementsByClassName("header__menu-icon")[0];
+    let headerNav = document.getElementsByClassName("header__nav")[0];
+
+    if (headerNav.classList.contains("menu--is-visible")) {
+      headerNav.classList.remove("is-fading-in");
+      headerNav.classList.remove("menu--is-visible")
+      headerMenuIcon.classList.remove("header__exit-icon");
+    }
+
+    // Show current link
     let selectedLink = document.getElementsByClassName("header__link")[0];
     selectedLink.children[0].classList.add("link--is-selected");
 
+    // Add fadeIn
     this.container.classList.remove("is-fading-out");
     this.container.classList.add("is-fading-in");
   },
@@ -25,6 +37,15 @@ var home = Barba.BaseView.extend({
 var about = Barba.BaseView.extend({
   namespace: 'about',
   onEnter: function() {
+    let headerMenuIcon = document.getElementsByClassName("header__menu-icon")[0];
+    let headerNav = document.getElementsByClassName("header__nav")[0];
+
+    if (headerNav.classList.contains("menu--is-visible")) {
+      headerNav.classList.remove("is-fading-in");
+      headerNav.classList.remove("menu--is-visible")
+      headerMenuIcon.classList.remove("header__exit-icon");
+    }
+
     let selectedLink = document.getElementsByClassName("header__link")[2];
     selectedLink.children[0].classList.add("link--is-selected");
 
@@ -45,6 +66,15 @@ var about = Barba.BaseView.extend({
 var projects = Barba.BaseView.extend({
   namespace: 'projects',
   onEnter: function() {
+    let headerMenuIcon = document.getElementsByClassName("header__menu-icon")[0];
+    let headerNav = document.getElementsByClassName("header__nav")[0];
+
+    if (headerNav.classList.contains("menu--is-visible")) {
+      headerNav.classList.remove("is-fading-in");
+      headerNav.classList.remove("menu--is-visible")
+      headerMenuIcon.classList.remove("header__exit-icon");
+    }
+
     let selectedLink = document.getElementsByClassName("header__link")[1];
     selectedLink.children[0].classList.add("link--is-selected");
 
@@ -310,7 +340,6 @@ function handleMenu() {
 
   if (headerNav.classList.contains("menu--is-visible")) {
 
-    navList.classList.replace("is-growing-in", "is-growing-out");
     headerNav.classList.replace("is-fading-in", "is-fading-out");
 
     this.classList.remove("header__exit-icon");
@@ -323,9 +352,6 @@ function handleMenu() {
     headerNav.classList.add("menu--is-visible");
     headerNav.classList.remove("is-fading-out");
     headerNav.classList.add("is-fading-in");
-
-    navList.classList.remove("is-growing-out");
-    navList.classList.add("is-growing-in");
 
     this.classList.add("header__exit-icon");
   }

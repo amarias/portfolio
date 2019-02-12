@@ -497,14 +497,6 @@ button {
   animation: slideFromLeft 0.5s;
 }
 
-.is-growing-in {
-  animation: growIn 0.8s;
-}
-
-.is-growing-out {
-  animation: growOut 0.5s;
-}
-
 .is-blinking {
   animation: blink 2s infinite;
 }
@@ -960,33 +952,6 @@ a:hover:not(.project-info__arrow) {
   from { opacity: 1; }
 
   to { opacity: 0; }
-}
-
-@keyframes growIn {
-  0% {
-    width: 0;
-    height: 0;
-    margin-left: 100%;
-    transform: rotate(20deg);
-    transform-origin: top left;
-  }
-
-  50% { transform: rotate(-50deg); }
-
-  100% {
-    margin-left: 0;
-    transform: rotate(0deg);
-  }
-}
-
-@keyframes growOut {
-  50% { transform: rotate(-50deg); }
-
-  100% {
-    width: 0;
-    height: 0;
-    transform: rotate(20deg);
-  }
 }
 
 @keyframes slideFromRight {
