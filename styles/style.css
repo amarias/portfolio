@@ -39,33 +39,35 @@
   =====================
 
   == Light Theme
-    - White             #F7F7F7
-    - Black             #222
+    - White               #F7F7F7
+    - Black               #222
     - Grey
-      ~ #ccc            (Lightest)
+      ~ #ccc              (Lightest)
       ~ #aaa
       ~ #777
       ~ #707070
       ~ #545454
       ~ #444
-      ~ #333            (Darkest)
-    - Light Red         #B81853
-    - Dull Green        #85B587
-    - Lighter Green     #4da64a
-    - Green             #408C3E
+      ~ #333              (Darkest)
+    - Light Red           #B81853
+    - Dull Green          #85B587
+    - Darker Dull Green   #81B083
+    - Light Green         #4da64a
+    - Green               #408C3E
 
   == Dark Theme
-    - White             #ddd
-    - Black             #111
+    - White               #ddd
+    - Black               #111
     - Grey
-      ~ #ccc            (Lightest)
+      ~ #ccc              (Lightest)
       ~ #bbb
       ~ #aaa
-      ~ #222            (Darkest)
-    - Dull Green-Blue   #7AAB8B
-    - Light Green       #7ac37d
-    - Other Green       #7aab8b
-    - Salmon            #ff797d
+      ~ #222              (Darkest)
+    - Dull Green-Blue     #7AAB8B
+    - Dull Light Green    #73b376
+    - Darker Dull Green   #81B083
+    - Pastel Green        #7ac37d
+    - Salmon              #ff797d
 
 
 
