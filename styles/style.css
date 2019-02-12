@@ -481,11 +481,11 @@ button {
 /* ================== */
 
 /* ~~~~~ Classes ~~~~~ */
-.is-fading-in {
+.is-fading-in :not(.h1--my-initials):not(span) {
   animation: fadeIn 1s;
 }
 
-.is-fading-out {
+.is-fading-out :not(.h1--my-initials):not(span) {
   animation: fadeOut 0.5s;
 }
 
@@ -518,20 +518,24 @@ button {
   z-index: 5;
 }
 
-.title--is-compressing {
+.title--is-compressing .h1--my-initials span {
   animation: isCompressing 1s;
+  animation-fill-mode: forwards;
 }
 
-.title--is-expanding {
+.title--is-expanding .h1--my-initials span {
   animation: isExpanding 1s;
+  animation-fill-mode: forwards;
 }
 
-.title--is-sliding-up {
+.title--is-sliding-up .h1--my-initials {
   animation: isSlidingUp 1s;
+  animation-fill-mode: forwards;
 }
 
-.title--is-sliding-down {
+.title--is-sliding-down .h1--my-initials {
   animation: isSlidingDown 1s;
+  animation-fill-mode: forwards;
 }
 
 .link--is-selected {

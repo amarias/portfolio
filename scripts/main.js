@@ -1,102 +1,201 @@
 /* ===== Page Transitions ===== */
 
+/* ~~ Views ~~ */
+
+var home = Barba.BaseView.extend({
+  namespace: 'home',
+  onEnter: function() {
+    let selectedLink = document.getElementsByClassName("header__link")[0];
+    selectedLink.children[0].classList.add("link--is-selected");
+
+    this.container.classList.remove("is-fading-out");
+    this.container.classList.add("is-fading-in");
+  },
+  onEnterCompleted: function() {},
+  onLeave: function() {
+    let selectedLink = document.getElementsByClassName("header__link")[0];
+    selectedLink.children[0].classList.remove("link--is-selected");
+
+    this.container.classList.remove("is-fading-in");
+  },
+  onLeaveCompleted: function() {}
+});
+
+
+var about = Barba.BaseView.extend({
+  namespace: 'about',
+  onEnter: function() {
+    let selectedLink = document.getElementsByClassName("header__link")[2];
+    selectedLink.children[0].classList.add("link--is-selected");
+
+    this.container.classList.remove("is-fading-out");
+    this.container.classList.add("is-fading-in");
+  },
+  onEnterCompleted: function() {},
+  onLeave: function() {
+    let selectedLink = document.getElementsByClassName("header__link")[2];
+    selectedLink.children[0].classList.remove("link--is-selected");
+
+    this.container.classList.remove("is-fading-in");
+  },
+  onLeaveCompleted: function() {}
+});
+
+
+var projects = Barba.BaseView.extend({
+  namespace: 'projects',
+  onEnter: function() {
+    let selectedLink = document.getElementsByClassName("header__link")[1];
+    selectedLink.children[0].classList.add("link--is-selected");
+
+    this.container.classList.remove("title--is-sliding-up");
+    this.container.classList.remove("is-fading-out");
+    this.container.classList.add("is-fading-in");
+  },
+  onEnterCompleted: function() {},
+  onLeave: function() {
+    let selectedLink = document.getElementsByClassName("header__link")[1];
+    selectedLink.children[0].classList.remove("link--is-selected");
+
+    this.container.classList.remove("is-fading-in");
+  },
+  onLeaveCompleted: function() {}
+});
+
+
+var projectInfo = Barba.BaseView.extend({
+  namespace: 'projectInfo',
+  onEnter: function() {
+    this.container.classList.remove("title--is-sliding-up");
+    this.container.classList.remove("is-fading-out");
+    this.container.classList.add("is-fading-in");
+  },
+  onEnterCompleted: function() {},
+  onLeave: function() {
+    this.container.classList.remove("is-fading-in");
+  },
+  onLeaveCompleted: function() {}
+});
+
+
+
+/* ~~ Initialize Views ~~ */
+home.init();
+about.init();
+projects.init();
+projectInfo.init();
+
+
+
+/* ~~ Transitions ~~ */
+
+// (Home || About) to (About || Home || Projects)
 let compressExpandTransition = Barba.BaseTransition.extend({
   start: function() {
-
     Promise.all([this.newContainerLoading, this.isCompressing()])
       .then(this.isExpanding.bind(this))
       .catch(error => console.log(error));
   },
 
   isCompressing: function() {
-    let h1MyInitialsSpan = this.oldContainer.querySelector(".h1--my-initial span");
-    h1MyInitialsSpan.classList.add("title--is-compressing");
-    return;
+    this.oldContainer.classList.remove("title--is-expanding");
+    this.oldContainer.classList.remove("is-fading-in");
+
+    var el = this;
+    setTimeout(function() {
+      el.oldContainer.classList.add("is-fading-out");
+    }, 500);
+
+    this.oldContainer.classList.add("title--is-compressing");
   },
 
   isExpanding: function() {
-    let h1MyInitialsSpan = this.newContainer.querySelector(".h1--my-initial span");
-    h1MyInitialsSpan.classList.add("title--is-expanding");
-    this.done();
+    var el = this;
+
+    setTimeout(function() {
+      if (el.newContainer.className != "projects") {
+        el.newContainer.classList.add("title--is-expanding");
+      }
+      el.done();
+    }, 1000);
   }
 });
 
-let compressTransition = Barba.BaseTransition.extend({
+
+// Projects to (ProjectInfo || Home || About)
+var projectsTransition = Barba.BaseTransition.extend({
   start: function() {
 
-    Promise.all([this.newContainerLoading, this.isCompressing()]).catch(error => console.log(error));
+    Promise.all([this.newContainerLoading, this.isFadingOut()])
+      .then(this.setTransition.bind(this))
+      .catch(error => console.log(error));
   },
 
-  isCompressing: function() {
-    let h1MyInitialsSpan = this.oldContainer.querySelector(".h1--my-initial span");
-    h1MyInitialsSpan.classList.add("title--is-compressing");
-    this.done();
-  }
-});
-
-let expandTransition = Barba.BaseTransition.extend({
-  start: function() {
-
-    this.newContainerLoading.then(this.isExpanding.bind(this)).catch(error => console.log(error));
+  isFadingOut: function() {
+    var el = this;
+    setTimeout(function() {
+      el.oldContainer.classList.add("is-fading-out");
+    }, 500);
   },
 
-  isExpanding: function() {
-    let h1MyInitialsSpan = this.newContainer.querySelector(".h1--my-initial span");
-    h1MyInitialsSpan.classList.add("title--is-expanding");
+  setTransition: function() {
+    if (this.newContainer.className === "projectInfo") {
+      this.oldContainer.classList.add("title--is-sliding-up");
+    } else {
+      this.newContainer.classList.add("title--is-expanding");
+    }
     this.done();
   }
 });
 
-let slideUpTransition = Barba.BaseTransition.extend({
+// ProjectInfo to Projects
+var slideDownTransition = Barba.BaseTransition.extend({
   start: function() {
 
-    Promise.all([this.newContainerLoading, this.isSlidingUp()]).catch(error => console.log(error));
+    Promise.all([this.newContainerLoading, this.isFadingOut()])
+      .then(this.isSlidingDown.bind(this))
+      .catch(error => console.log(error));
   },
 
-  isSlidingUp: function() {
-    let h1MyInitialsSpan = this.oldContainer.querySelector(".h1--my-initial");
-    h1MyInitialsSpan.classList.add("title--is-sliding-up");
-    this.done();
-  }
-});
-
-let slideDownTransition = Barba.BaseTransition.extend({
-  start: function() {
-
-    Promise.all([this.newContainerLoading, this.isSlidingDown()]).catch(error => console.log(error));
+  isFadingOut: function() {
+    var el = this;
+    setTimeout(function() {
+      el.oldContainer.classList.add("is-fading-out");
+    }, 500);
   },
 
   isSlidingDown: function() {
-    let h1MyInitialsSpan = document.body.querySelector(".h1--my-initial");
-    h1MyInitialsSpan.classList.add("title--is-sliding-down");
+
+    var el = this;
+    setTimeout(function() {
+      el.oldContainer.classList.add("is-fading-out");
+    }, 500);
+
+    this.oldContainer.classList.add("title--is-sliding-down");
     this.done();
   }
 });
 
 Barba.Pjax.getTransition = function() {
 
-  let currentPage = Barba.BaseTransition.extend().oldContainer.className;
-  let newPage = Barba.BaseTransition.extend().newContainer.className;
+  let currentPage = document.getElementsByTagName("main")[0].className;
 
   switch (currentPage) {
     case "home":
     case "about":
-      if (newPage === "projects") {
-        return compressTransition;
-      }
       return compressExpandTransition;
     case "projects":
-      if (newPage === "projectInfo") {
-        return slideUpTransition;
-      }
-      return expandTransition;
+      return projectsTransition;
     default:
       return slideDownTransition;
   }
 };
 
-// Initialize transitions
+
+
+/* ~~ Initialize Transitions ~~ */
 Barba.Pjax.start();
+
 
 
 /* ===== Global Variables ===== */
@@ -109,6 +208,8 @@ let projectCardLink = document.getElementsByClassName("project-card__link");
 let projectCardIndex = 0;
 let headerMenuIcon = document.getElementsByClassName("header__menu-icon");
 let themeCheckbox = document.getElementsByClassName("theme-checkbox")[0];
+
+
 
 /* ===== Event Listeners ===== */
 
@@ -142,9 +243,13 @@ if (themeCheckbox != undefined) {
   themeCheckbox.addEventListener("click", changeTheme);
 }
 
+
+
 /* ===== Initialize Page ===== */
 
 setTheme();
+
+
 
 /* ===== Functions ===== */
 
