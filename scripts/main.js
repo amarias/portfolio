@@ -1,7 +1,39 @@
+/* ===== Global Variables ===== */
+
+var projectsArrow = document.getElementsByClassName("projects__arrow");
+var projectCard = document.getElementsByClassName("project-card");
+var projectsTitle = document.getElementsByClassName("title");
+var titleImg = document.getElementsByClassName("title__img");
+var projectCardLink = document.getElementsByClassName("project-card__link");
+var projectCardIndex = 0;
+var headerMenuIcon = document.getElementsByClassName("header__menu-icon");
+var themeCheckbox = document.getElementsByClassName("theme-checkbox")[0];
+
+
+
+/* ===== Event Listeners ===== */
+
+Barba.Dispatcher.on('newPageReady', function(currentStatus, oldStatus, container) {
+  // Check if page is projects.html
+  if (projectCard[0] != undefined) {
+    projectCardIndex = 0;
+    addProjectsListeners();
+  }
+});
+
+if (headerMenuIcon[0] != undefined) {
+  headerMenuIcon[0].addEventListener("click", handleMenu);
+}
+
+if (themeCheckbox != undefined) {
+  themeCheckbox.addEventListener("click", changeTheme);
+}
+
+
+
 /* ===== Page Transitions ===== */
 
 /* ~~ Views ~~ */
-
 var home = Barba.BaseView.extend({
   namespace: 'home',
   onEnter: function() {
@@ -23,7 +55,9 @@ var home = Barba.BaseView.extend({
     this.container.classList.remove("is-fading-out");
     this.container.classList.add("is-fading-in");
   },
-  onEnterCompleted: function() {},
+  onEnterCompleted: function() {
+    this.container.classList.remove("is-fading-in");
+  },
   onLeave: function() {
     let selectedLink = document.getElementsByClassName("header__link")[0];
     selectedLink.children[0].classList.remove("link--is-selected");
@@ -52,7 +86,9 @@ var about = Barba.BaseView.extend({
     this.container.classList.remove("is-fading-out");
     this.container.classList.add("is-fading-in");
   },
-  onEnterCompleted: function() {},
+  onEnterCompleted: function() {
+    this.container.classList.remove("is-fading-in");
+  },
   onLeave: function() {
     let selectedLink = document.getElementsByClassName("header__link")[2];
     selectedLink.children[0].classList.remove("link--is-selected");
@@ -78,11 +114,12 @@ var projects = Barba.BaseView.extend({
     let selectedLink = document.getElementsByClassName("header__link")[1];
     selectedLink.children[0].classList.add("link--is-selected");
 
-    this.container.classList.remove("title--is-sliding-up");
     this.container.classList.remove("is-fading-out");
     this.container.classList.add("is-fading-in");
   },
-  onEnterCompleted: function() {},
+  onEnterCompleted: function() {
+    this.container.classList.remove("is-fading-in");
+  },
   onLeave: function() {
     let selectedLink = document.getElementsByClassName("header__link")[1];
     selectedLink.children[0].classList.remove("link--is-selected");
@@ -96,17 +133,23 @@ var projects = Barba.BaseView.extend({
 var projectInfo = Barba.BaseView.extend({
   namespace: 'projectInfo',
   onEnter: function() {
-    this.container.classList.remove("title--is-sliding-up");
+    let selectedLink = document.getElementsByClassName("header__link")[1];
+    selectedLink.children[0].classList.add("link--is-selected");
+
     this.container.classList.remove("is-fading-out");
     this.container.classList.add("is-fading-in");
   },
-  onEnterCompleted: function() {},
+  onEnterCompleted: function() {
+    this.container.classList.remove("is-fading-in");
+  },
   onLeave: function() {
+    let selectedLink = document.getElementsByClassName("header__link")[1];
+    selectedLink.children[0].classList.remove("link--is-selected");
+
     this.container.classList.remove("is-fading-in");
   },
   onLeaveCompleted: function() {}
 });
-
 
 
 /* ~~ Initialize Views ~~ */
@@ -114,7 +157,6 @@ home.init();
 about.init();
 projects.init();
 projectInfo.init();
-
 
 
 /* ~~ Transitions ~~ */
@@ -169,9 +211,7 @@ var projectsTransition = Barba.BaseTransition.extend({
   },
 
   setTransition: function() {
-    if (this.newContainer.className === "projectInfo") {
-      this.oldContainer.classList.add("title--is-sliding-up");
-    } else {
+    if (this.newContainer.className != "projectInfo") {
       this.newContainer.classList.add("title--is-expanding");
     }
     this.done();
@@ -179,11 +219,11 @@ var projectsTransition = Barba.BaseTransition.extend({
 });
 
 // ProjectInfo to Projects
-var slideDownTransition = Barba.BaseTransition.extend({
+var projectsInfoTransition = Barba.BaseTransition.extend({
   start: function() {
 
     Promise.all([this.newContainerLoading, this.isFadingOut()])
-      .then(this.isSlidingDown.bind(this))
+      .then(this.isFinished.bind(this))
       .catch(error => console.log(error));
   },
 
@@ -194,17 +234,11 @@ var slideDownTransition = Barba.BaseTransition.extend({
     }, 500);
   },
 
-  isSlidingDown: function() {
-
-    var el = this;
-    setTimeout(function() {
-      el.oldContainer.classList.add("is-fading-out");
-    }, 500);
-
-    this.oldContainer.classList.add("title--is-sliding-down");
+  isFinished: function() {
     this.done();
   }
 });
+
 
 Barba.Pjax.getTransition = function() {
 
@@ -217,34 +251,23 @@ Barba.Pjax.getTransition = function() {
     case "projects":
       return projectsTransition;
     default:
-      return slideDownTransition;
+      return projectsInfoTransition;
   }
 };
 
 
 
-/* ~~ Initialize Transitions ~~ */
+/* ===== Initialize Page ===== */
+
+setTheme();
+
+// Initialize Transitions
 Barba.Pjax.start();
 
 
+/* ===== Functions ===== */
 
-/* ===== Global Variables ===== */
-
-let projectsArrow = document.getElementsByClassName("projects__arrow");
-let projectCard = document.getElementsByClassName("project-card");
-let projectsTitle = document.getElementsByClassName("title");
-let titleImg = document.getElementsByClassName("title__img");
-let projectCardLink = document.getElementsByClassName("project-card__link");
-let projectCardIndex = 0;
-let headerMenuIcon = document.getElementsByClassName("header__menu-icon");
-let themeCheckbox = document.getElementsByClassName("theme-checkbox")[0];
-
-
-
-/* ===== Event Listeners ===== */
-
-// Check if page is projects.html
-if (projectCard[0] != undefined) {
+function addProjectsListeners() {
   projectsArrow[0].addEventListener("click", showLeftProjectCard);
   projectsArrow[1].addEventListener("click", showRightProjectCard);
 
@@ -264,24 +287,6 @@ if (projectCard[0] != undefined) {
     });
   }
 }
-
-if (headerMenuIcon[0] != undefined) {
-  headerMenuIcon[0].addEventListener("click", handleMenu);
-}
-
-if (themeCheckbox != undefined) {
-  themeCheckbox.addEventListener("click", changeTheme);
-}
-
-
-
-/* ===== Initialize Page ===== */
-
-setTheme();
-
-
-
-/* ===== Functions ===== */
 
 // Left Arrow = 0; Right Arrow = 1
 function showLeftProjectCard() {

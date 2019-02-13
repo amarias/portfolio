@@ -522,16 +522,6 @@ button {
   animation-fill-mode: forwards;
 }
 
-.title--is-sliding-up .h1--my-initials {
-  animation: isSlidingUp 1s;
-  animation-fill-mode: forwards;
-}
-
-.title--is-sliding-down .h1--my-initials {
-  animation: isSlidingDown 1s;
-  animation-fill-mode: forwards;
-}
-
 .link--is-selected {
   color: #4da64a;
   border-bottom: 0.2rem solid #4da64a;
@@ -983,9 +973,7 @@ a:hover:not(.project-info__arrow) {
   to { font-size: 3.8; }
 }
 
-@keyframes isSlidingDown {
 
-}
 
 /* ================= */
 /* ===== Theme ===== */
