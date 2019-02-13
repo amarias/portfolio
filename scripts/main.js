@@ -204,6 +204,8 @@ var projectsTransition = Barba.BaseTransition.extend({
   },
 
   isFadingOut: function() {
+    this.oldContainer.classList.remove("is-fading-in");
+
     var el = this;
     setTimeout(function() {
       el.oldContainer.classList.add("is-fading-out");
@@ -228,6 +230,8 @@ var projectsInfoTransition = Barba.BaseTransition.extend({
   },
 
   isFadingOut: function() {
+    this.oldContainer.classList.remove("is-fading-in");
+
     var el = this;
     setTimeout(function() {
       el.oldContainer.classList.add("is-fading-out");
