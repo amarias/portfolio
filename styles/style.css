@@ -483,12 +483,14 @@ button {
 /* ================== */
 
 /* ~~~~~ Classes ~~~~~ */
-.is-fading-in :not(.h1--my-initials):not(span) {
+.is-fading-in :not(.project-card):not(.title):not(.h1--my-initials):not(span):not(.on-hover):not(.project-card__link):not(.arrow) {
   animation: fadeIn 1s;
+  animation-fill-mode: forwards;
 }
 
-.is-fading-out :not(.h1--my-initials):not(span) {
+.is-fading-out :not(.title):not(.h1--my-initials):not(span):not(.on-hover) {
   animation: fadeOut 0.5s;
+  animation-fill-mode: forwards;
 }
 
 .is-sliding-right {
