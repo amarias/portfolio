@@ -121,7 +121,8 @@ body {
 
 header {
   background-color: transparent;
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   position: fixed;
   width: 100vw;
 }
@@ -153,8 +154,10 @@ main {
 }
 
 img, video {
-  object-fit: cover;
-  object-position: center;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
 }
 
 button {
@@ -167,34 +170,69 @@ button {
 /* ===== Layout ===== */
 /* ================== */
 .project-info--layout, .header--layout {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .--flex-layout-center {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .--flex-layout-column {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
 .article--layout {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
 .contact-card {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .barba-container {
@@ -203,8 +241,13 @@ button {
 }
 
 .project-info__left--layout {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 
@@ -227,7 +270,8 @@ button {
   font-family: 'Orbitron', sans-serif;
   border: 0.2rem solid inherit;
   border-radius: 0.4rem;
-  box-shadow: 0 0.1rem 0.4rem #ccc;
+  -webkit-box-shadow: 0 0.1rem 0.4rem #ccc;
+          box-shadow: 0 0.1rem 0.4rem #ccc;
   padding: 0.4rem 1rem;
 }
 
@@ -239,10 +283,19 @@ button {
 
 /* ~~~~~ Titles ~~~~~ */
 .title {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   background: inherit;
   margin-bottom: 10vh;
   position: relative;
@@ -284,8 +337,10 @@ button {
 .title__img {
   position: absolute;
   z-index: 10;
-  box-sizing: border-box;
-  box-shadow: 0 0 0.5rem #aaa;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  -webkit-box-shadow: 0 0 0.5rem #aaa;
+          box-shadow: 0 0 0.5rem #aaa;
   width: inherit;
   height: inherit;
   border-radius: 5rem;
@@ -299,15 +354,25 @@ button {
 
 /* ~~~~~ Projects ~~~~~ */
 .projects {
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   padding: 0 5vw;
 }
 
 .project-card {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   margin: 0 15vw;
 }
 
@@ -321,7 +386,8 @@ button {
 }
 
 .project-card__link {
-  box-shadow: 0 0rem 0.5rem #aaa;
+  -webkit-box-shadow: 0 0rem 0.5rem #aaa;
+          box-shadow: 0 0rem 0.5rem #aaa;
   border-radius: 0.5rem;
   padding: 1rem 3rem;
 }
@@ -335,13 +401,15 @@ button {
 
 .secondary-btn {
   color: #408C3E;
-  box-shadow: 0 0rem 0.5rem #aaa;
+  -webkit-box-shadow: 0 0rem 0.5rem #aaa;
+          box-shadow: 0 0rem 0.5rem #aaa;
   background-color: transparent;
 }
 
 /* ~~~~~ Project Description ~~~~~ */
 .project-info {
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   padding: 0 1.5vw;
 }
 
@@ -352,7 +420,8 @@ button {
 }
 
 .project-info__left {
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   width: 35vw;
   height: 55vh;
   padding-top: 5vh;
@@ -370,7 +439,8 @@ button {
 }
 
 .project-info__right {
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   width: 35vw;
   height: 50vh;
   margin-bottom: 5vh;
@@ -384,7 +454,8 @@ button {
 }
 
 .project-info__img {
-  box-shadow: 0 0 1rem #aaa;
+  -webkit-box-shadow: 0 0 1rem #aaa;
+          box-shadow: 0 0 1rem #aaa;
   border-radius: 5rem;
   width: 90%;
   height: 85%;
@@ -393,6 +464,8 @@ button {
 
 /* ~~~~~ About Me ~~~~~ */
 .about-card {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   position: absolute;
   width: 70vw;
@@ -406,7 +479,8 @@ button {
   height: 45vh;
   height: inherit;
   position: relative;
-  align-self: center;
+  -ms-flex-item-align: center;
+      align-self: center;
   z-index: 10;
 }
 
@@ -416,7 +490,8 @@ button {
   background-position: center;
   width: inherit;
   height: inherit;
-  box-shadow: -0.5rem 0.6rem 0.5rem #ccc;
+  -webkit-box-shadow: -0.5rem 0.6rem 0.5rem #ccc;
+          box-shadow: -0.5rem 0.6rem 0.5rem #ccc;
   border-radius: 3rem;
   z-index: 10;
 }
@@ -433,8 +508,13 @@ button {
 }
 
 .about-card__info {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   position: relative;
   height: inherit;
   margin-left: 3vw;
@@ -465,7 +545,9 @@ button {
 }
 
 .about-card__links {
-  writing-mode: vertical-lr;
+  -webkit-writing-mode: vertical-lr;
+      -ms-writing-mode: tb-lr;
+          writing-mode: vertical-lr;
   text-orientation: mixed;
   position: absolute;
   top: 0;
@@ -484,25 +566,32 @@ button {
 
 /* ~~~~~ Classes ~~~~~ */
 .is-fading-in :not(.project-card):not(.title):not(.h1--my-initials):not(span):not(.on-hover):not(.project-card__link):not(.arrow) {
-  animation: fadeIn 1s;
-  animation-fill-mode: forwards;
+  -webkit-animation: fadeIn 1s;
+          animation: fadeIn 1s;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
 }
 
 .is-fading-out :not(.title):not(.h1--my-initials):not(span):not(.on-hover) {
-  animation: fadeOut 0.5s;
-  animation-fill-mode: forwards;
+  -webkit-animation: fadeOut 0.5s;
+          animation: fadeOut 0.5s;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
 }
 
 .is-sliding-right {
-  animation: slideFromRight 0.5s;
+  -webkit-animation: slideFromRight 0.5s;
+          animation: slideFromRight 0.5s;
 }
 
 .is-sliding-left {
-  animation: slideFromLeft 0.5s;
+  -webkit-animation: slideFromLeft 0.5s;
+          animation: slideFromLeft 0.5s;
 }
 
 .is-blinking {
-  animation: blink 2s infinite;
+  -webkit-animation: blink 2s infinite;
+          animation: blink 2s infinite;
 }
 
 .is-hidden {
@@ -515,13 +604,17 @@ button {
 }
 
 .title--is-compressing .h1--my-initials span {
-  animation: isCompressing 1s;
-  animation-fill-mode: forwards;
+  -webkit-animation: isCompressing 1s;
+          animation: isCompressing 1s;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
 }
 
 .title--is-expanding .h1--my-initials span {
-  animation: isExpanding 1s;
-  animation-fill-mode: forwards;
+  -webkit-animation: isExpanding 1s;
+          animation: isExpanding 1s;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
 }
 
 .link--is-selected {
@@ -548,9 +641,11 @@ a:hover:not(.project-info__arrow) {
 
 .secondary-btn:hover {
   background-color: #4da64a;
-  box-shadow: 0 0rem 0.5rem #ccc;
+  -webkit-box-shadow: 0 0rem 0.5rem #ccc;
+          box-shadow: 0 0rem 0.5rem #ccc;
   color: #F7F7F7;
-  animation: fadeIn 0.5s;
+  -webkit-animation: fadeIn 0.5s;
+          animation: fadeIn 0.5s;
 }
 
 .border::before {
@@ -603,7 +698,9 @@ a:hover:not(.project-info__arrow) {
   }
 
   .about-card__info {
-    align-items: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     text-align: center;
     margin: 0;
   }
@@ -624,7 +721,9 @@ a:hover:not(.project-info__arrow) {
   }
 
   .about-card__links {
-    writing-mode: horizontal-tb;
+    -webkit-writing-mode: horizontal-tb;
+        -ms-writing-mode: lr-tb;
+            writing-mode: horizontal-tb;
     position: relative;
   }
 
@@ -665,14 +764,24 @@ a:hover:not(.project-info__arrow) {
   .nav__list {
     background-color: transparent;
     color: #ccc;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     width: 100vw;
     height: 100vh;
     padding-bottom: 15vh;
-    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
   }
 
   .header__link {
@@ -709,9 +818,16 @@ a:hover:not(.project-info__arrow) {
   }
 
   .article--layout {
-    flex-direction: column-reverse;
-    justify-content: center;
-    align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: reverse;
+        -ms-flex-direction: column-reverse;
+            flex-direction: column-reverse;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     height: 80vh;
     overflow-y: auto;
   }
@@ -772,7 +888,8 @@ a:hover:not(.project-info__arrow) {
 
   .secondary-btn {
     color: #4da64a;
-    box-shadow: unset;
+    -webkit-box-shadow: unset;
+            box-shadow: unset;
   }
 
   .projects {
@@ -780,7 +897,8 @@ a:hover:not(.project-info__arrow) {
   }
 
   .secondary-btn:hover {
-    box-shadow: unset;
+    -webkit-box-shadow: unset;
+            box-shadow: unset;
     background-color: transparent;
     color: #4da64a;
   }
@@ -806,7 +924,10 @@ a:hover:not(.project-info__arrow) {
   }
 
   .about-card {
-    flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
   }
 
   .about-portrait {
@@ -819,7 +940,8 @@ a:hover:not(.project-info__arrow) {
   }
 
   .about-card__img {
-    box-shadow: 0 0.4rem 0.5rem #ccc;
+    -webkit-box-shadow: 0 0.4rem 0.5rem #ccc;
+            box-shadow: 0 0.4rem 0.5rem #ccc;
     border-radius: 100%;
   }
 
@@ -869,9 +991,16 @@ a:hover:not(.project-info__arrow) {
   }
 
   .article--layout {
-    flex-direction: column-reverse;
-    justify-content: center;
-    align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: reverse;
+        -ms-flex-direction: column-reverse;
+            flex-direction: column-reverse;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     height: 80vh;
     overflow-y: auto;
   }
@@ -936,10 +1065,22 @@ a:hover:not(.project-info__arrow) {
 /* ===== Animations ===== */
 /* ====================== */
 
+@-webkit-keyframes fadeIn {
+  from { opacity: 0; }
+
+  to { opacity: 1; }
+}
+
 @keyframes fadeIn {
   from { opacity: 0; }
 
   to { opacity: 1; }
+}
+
+@-webkit-keyframes fadeOut {
+  from { opacity: 1; }
+
+  to { opacity: 0; }
 }
 
 @keyframes fadeOut {
@@ -948,10 +1089,22 @@ a:hover:not(.project-info__arrow) {
   to { opacity: 0; }
 }
 
+@-webkit-keyframes slideFromRight {
+  from { margin-left: 25vw; }
+
+  to { margin-left: 0; }
+}
+
 @keyframes slideFromRight {
   from { margin-left: 25vw; }
 
   to { margin-left: 0; }
+}
+
+@-webkit-keyframes slideFromLeft {
+  from { margin-right: 25vw; }
+
+  to { margin-right: 0; }
 }
 
 @keyframes slideFromLeft {
@@ -960,14 +1113,29 @@ a:hover:not(.project-info__arrow) {
   to { margin-right: 0; }
 }
 
+@-webkit-keyframes blink {
+  0%, 100% { opacity: 1; }
+
+  50% { opacity: 0; }
+}
+
 @keyframes blink {
   0%, 100% { opacity: 1; }
 
   50% { opacity: 0; }
 }
 
+@-webkit-keyframes isCompressing {
+  to { font-size: 0; }
+}
+
 @keyframes isCompressing {
   to { font-size: 0; }
+}
+
+@-webkit-keyframes isExpanding {
+  from { font-size: 0;}
+  to { font-size: 3.8; }
 }
 
 @keyframes isExpanding {
@@ -1008,7 +1176,8 @@ body.--dark, .--dark .h1--my-initials {
 }
 
 .--dark .project-card__link {
-  box-shadow: unset;
+  -webkit-box-shadow: unset;
+          box-shadow: unset;
 }
 
 .--dark .primary-btn {
@@ -1018,7 +1187,8 @@ body.--dark, .--dark .h1--my-initials {
 }
 
 .--dark .secondary-btn {
-  box-shadow: unset;
+  -webkit-box-shadow: unset;
+          box-shadow: unset;
 }
 
 .--dark .project-info__link {
@@ -1027,7 +1197,8 @@ body.--dark, .--dark .h1--my-initials {
 
 .--dark .about-card__img {
   background-image: url(../images/me-dark.jpg);
-  box-shadow: unset;
+  -webkit-box-shadow: unset;
+          box-shadow: unset;
 }
 
 .--dark .triangle-img-cover {
@@ -1039,7 +1210,8 @@ body.--dark, .--dark .h1--my-initials {
 }
 
 .--dark .project-info__img {
-  box-shadow: unset;
+  -webkit-box-shadow: unset;
+          box-shadow: unset;
 }
 
 .--dark .link--is-selected {
@@ -1052,7 +1224,8 @@ body.--dark, .--dark .h1--my-initials {
 }
 
 .--dark .secondary-btn:hover {
-  box-shadow: unset;
+  -webkit-box-shadow: unset;
+          box-shadow: unset;
   background-color: #7aab8b;
   color: #222;
 }
