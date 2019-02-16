@@ -200,6 +200,12 @@ Barba.Dispatcher.on('transitionCompleted', function(currentStatus, oldStatus, co
     projectCardIndex = 0;
     addProjectsListeners();
   }
+  if (isMobile()) {
+    let linksOnHover = document.getElementsByClassName("link");
+    for (let i = 0; i < linksOnHover.length; i++) {
+      linksOnHover[i].classList.remove("link");
+    }
+  }
 });
 
 if (headerMenuIcon[0] != undefined) {
@@ -346,4 +352,11 @@ function changeTheme() {
   setTimeout(function() {
     bodyEl.classList.remove("is-fading-in")
   }, 1000);
+}
+
+function isMobile() {
+  if (window.screen.width <= 900) {
+    return true;
+  }
+  return false;
 }
