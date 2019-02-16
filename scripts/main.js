@@ -200,12 +200,6 @@ Barba.Dispatcher.on('transitionCompleted', function(currentStatus, oldStatus, co
     projectCardIndex = 0;
     addProjectsListeners();
   }
-  if (isMobile()) {
-    let linksOnHover = document.getElementsByClassName("link");
-    for (let i = 0; i < linksOnHover.length; i++) {
-      linksOnHover[i].classList.remove("link");
-    }
-  }
 });
 
 if (headerMenuIcon[0] != undefined) {
@@ -236,15 +230,17 @@ function addProjectsListeners() {
     projectsTitle[i].addEventListener("mouseover", function(e) {
       fadeInElement(titleImg[i]);
     });
-    projectCardLink[i].addEventListener("mouseover", function(e) {
-      fadeInElement(titleImg[i]);
-    });
     projectsTitle[i].addEventListener("mouseleave", function(e) {
       fadeOutElement(titleImg[i]);
     });
-    projectCardLink[i].addEventListener("mouseleave", function(e) {
-      fadeOutElement(titleImg[i]);
-    });
+    if (!isMobile()) {
+      projectCardLink[i].addEventListener("mouseover", function(e) {
+        fadeInElement(titleImg[i]);
+      });
+      projectCardLink[i].addEventListener("mouseleave", function(e) {
+        fadeOutElement(titleImg[i]);
+      });
+    }
   }
 }
 
