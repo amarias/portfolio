@@ -820,8 +820,7 @@ a:hover:not(.project-info__arrow) {
   .article--layout {
     -webkit-box-orient: vertical;
     -webkit-box-direction: reverse;
-        -ms-flex-direction: column-reverse;
-            flex-direction: column-reverse;
+            flex-direction: column;
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
@@ -833,6 +832,7 @@ a:hover:not(.project-info__arrow) {
   }
 
   .project-info__left {
+    order: 1;
     text-align: center;
     width: auto;
   }
@@ -843,6 +843,7 @@ a:hover:not(.project-info__arrow) {
   }
 
   .project-info__right {
+    order: 0;
     width: auto;
     margin: 0;
     margin-top: 25vh;
@@ -993,8 +994,7 @@ a:hover:not(.project-info__arrow) {
   .article--layout {
     -webkit-box-orient: vertical;
     -webkit-box-direction: reverse;
-        -ms-flex-direction: column-reverse;
-            flex-direction: column-reverse;
+    flex-direction: column;
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
@@ -1006,6 +1006,7 @@ a:hover:not(.project-info__arrow) {
   }
 
   .project-info__left {
+    order: 0;
     text-align: center;
     width: auto;
   }
@@ -1016,6 +1017,7 @@ a:hover:not(.project-info__arrow) {
   }
 
   .project-info__right {
+    order: 1;
     width: auto;
     margin: 0;
     margin-top: 25vh;
