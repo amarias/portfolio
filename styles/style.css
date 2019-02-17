@@ -454,6 +454,7 @@ button {
 }
 
 .project-info__img {
+  position: relative;
   -webkit-box-shadow: 0 0 1rem #aaa;
           box-shadow: 0 0 1rem #aaa;
   border-radius: 5rem;
