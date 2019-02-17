@@ -1,6 +1,6 @@
 /*=====================
     Table of Contents
-  =====================/*
+  =====================
 
 
   == Tags (Base)
@@ -99,7 +99,7 @@
     - triangle-img-cover
 
 
-
+*/
 /* ================ */
 /* ===== Tags ===== */
 /* ================ */
@@ -820,23 +820,22 @@ a:hover:not(.project-info__arrow) {
 
   .article--layout {
     -webkit-box-orient: vertical;
-    -webkit-box-direction: reverse;
-            -ms-flex-direction: column;
-        flex-direction: column;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
+            flex-flow: wrap-reverse;
     height: 80vh;
+    height: -webkit-fill-available;
     overflow-y: auto;
   }
 
   .project-info__left {
-    -webkit-box-ordinal-group: 2;
-        -ms-flex-order: 1;
-            order: 1;
     text-align: center;
     width: auto;
   }
@@ -847,9 +846,6 @@ a:hover:not(.project-info__arrow) {
   }
 
   .project-info__right {
-    -webkit-box-ordinal-group: 1;
-        -ms-flex-order: 0;
-            order: 0;
     width: auto;
     margin: 0;
     margin-top: 25vh;
@@ -999,23 +995,22 @@ a:hover:not(.project-info__arrow) {
 
   .article--layout {
     -webkit-box-orient: vertical;
-    -webkit-box-direction: reverse;
-    -ms-flex-direction: column;
-        flex-direction: column;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
+            flex-flow: wrap-reverse;
     height: 80vh;
+    height: -webkit-fill-available;
     overflow-y: auto;
   }
 
   .project-info__left {
-    -webkit-box-ordinal-group: 1;
-        -ms-flex-order: 0;
-            order: 0;
     text-align: center;
     width: auto;
   }
@@ -1026,9 +1021,6 @@ a:hover:not(.project-info__arrow) {
   }
 
   .project-info__right {
-    -webkit-box-ordinal-group: 2;
-        -ms-flex-order: 1;
-            order: 1;
     width: auto;
     margin: 0;
     margin-top: 25vh;
@@ -1079,81 +1071,135 @@ a:hover:not(.project-info__arrow) {
 /* ====================== */
 
 @-webkit-keyframes fadeIn {
-  from { opacity: 0; }
+  from {
+    opacity: 0;
+  }
 
-  to { opacity: 1; }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
+  from {
+    opacity: 0;
+  }
 
-  to { opacity: 1; }
+  to {
+    opacity: 1;
+  }
 }
 
 @-webkit-keyframes fadeOut {
-  from { opacity: 1; }
+  from {
+    opacity: 1;
+  }
 
-  to { opacity: 0; }
+  to {
+    opacity: 0;
+  }
 }
 
 @keyframes fadeOut {
-  from { opacity: 1; }
+  from {
+    opacity: 1;
+  }
 
-  to { opacity: 0; }
+  to {
+    opacity: 0;
+  }
 }
 
 @-webkit-keyframes slideFromRight {
-  from { margin-left: 25vw; }
+  from {
+    margin-left: 25vw;
+  }
 
-  to { margin-left: 0; }
+  to {
+    margin-left: 0;
+  }
 }
 
 @keyframes slideFromRight {
-  from { margin-left: 25vw; }
+  from {
+    margin-left: 25vw;
+  }
 
-  to { margin-left: 0; }
+  to {
+    margin-left: 0;
+  }
 }
 
 @-webkit-keyframes slideFromLeft {
-  from { margin-right: 25vw; }
+  from {
+    margin-right: 25vw;
+  }
 
-  to { margin-right: 0; }
+  to {
+    margin-right: 0;
+  }
 }
 
 @keyframes slideFromLeft {
-  from { margin-right: 25vw; }
+  from {
+    margin-right: 25vw;
+  }
 
-  to { margin-right: 0; }
+  to {
+    margin-right: 0;
+  }
 }
 
 @-webkit-keyframes blink {
-  0%, 100% { opacity: 1; }
+  0%, 100% {
+    opacity: 1;
+  }
 
-  50% { opacity: 0; }
+  50% {
+    opacity: 0;
+  }
 }
 
 @keyframes blink {
-  0%, 100% { opacity: 1; }
+  0%, 100% {
+    opacity: 1;
+  }
 
-  50% { opacity: 0; }
+  50% {
+    opacity: 0;
+  }
 }
 
 @-webkit-keyframes isCompressing {
-  to { font-size: 0; }
+  to {
+    font-size: 0;
+  }
 }
 
 @keyframes isCompressing {
-  to { font-size: 0; }
+  to {
+    font-size: 0;
+  }
 }
 
 @-webkit-keyframes isExpanding {
-  from { font-size: 0;}
-  to { font-size: 3.8; }
+  from {
+    font-size: 0;
+  }
+
+  to {
+    font-size: 3.8;
+  }
 }
 
 @keyframes isExpanding {
-  from { font-size: 0;}
-  to { font-size: 3.8; }
+  from {
+    font-size: 0;
+  }
+
+  to {
+    font-size: 3.8;
+  }
 }
 
 
