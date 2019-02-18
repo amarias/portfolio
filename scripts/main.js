@@ -351,7 +351,7 @@ function changeTheme() {
 }
 
 function isMobile() {
-  if (window.screen.width <= 900) {
+  if (window.screen.width <= 1200) {
     return true;
   }
   return false;
