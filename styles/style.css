@@ -169,7 +169,7 @@ button {
 /* ================== */
 /* ===== Layout ===== */
 /* ================== */
-.project-info--layout, .header--layout {
+.header--layout {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -179,6 +179,11 @@ button {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+.project-info--layout {
+  display: grid;
+  grid-template-columns: 10vw 1fr 10vw;
 }
 
 .--flex-layout-center {
@@ -206,18 +211,13 @@ button {
           justify-content: space-between;
 }
 
-.article--layout {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-}
+  .article--layout {
+    grid-column-start: 2;
+    grid-column-end: 3;
+
+    display: block;
+    margin: auto;
+  }
 
 .contact-card {
   display: -webkit-box;
@@ -248,6 +248,7 @@ button {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  float: left;
 }
 
 
@@ -413,6 +414,22 @@ button {
   padding: 0 1.5vw;
 }
 
+.arrow--align-left {
+  grid-column-start: 1;
+  grid-column-end: 2;
+  -ms-flex-item-align: center;
+      align-self: center;
+  justify-self: start;
+}
+
+.arrow--align-right {
+  grid-column-start: 3;
+  grid-column-end: 4;
+  -ms-flex-item-align: center;
+      align-self: center;
+  justify-self: end;
+}
+
 .--back-btn {
   font-size: 2.4rem;
   color: inherit;
@@ -444,6 +461,7 @@ button {
   width: 35vw;
   height: 50vh;
   margin-bottom: 5vh;
+  float: right;
 }
 
 .project-info__img-container {
@@ -819,20 +837,10 @@ a:hover:not(.project-info__arrow) {
   }
 
   .article--layout {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-            flex-flow: wrap-reverse;
-    height: 80vh;
-    height: -webkit-fill-available;
+    overflow: hidden;
     overflow-y: auto;
+
+    margin: 0 0 5vh 0;
   }
 
   .project-info__left {
@@ -846,9 +854,11 @@ a:hover:not(.project-info__arrow) {
   }
 
   .project-info__right {
-    width: auto;
     margin: 0;
     margin-top: 25vh;
+    margin-left: auto;
+    margin-right: auto;
+    float: unset;
   }
 
   .about-card__contact {
@@ -924,6 +934,9 @@ a:hover:not(.project-info__arrow) {
   .project-info__right {
     height: 25vh;
     margin: 10vh 5vw 0 5vw;
+    margin-left: auto;
+    margin-right: auto;
+    float: unset;
   }
 
   .about-card {
@@ -994,20 +1007,9 @@ a:hover:not(.project-info__arrow) {
   }
 
   .article--layout {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-            flex-flow: wrap-reverse;
-    height: 80vh;
-    height: -webkit-fill-available;
+    overflow: hidden;
     overflow-y: auto;
+    margin: 0 0 5vh 0;
   }
 
   .project-info__left {
@@ -1021,18 +1023,17 @@ a:hover:not(.project-info__arrow) {
   }
 
   .project-info__right {
-    width: auto;
     margin: 0;
-    margin-top: 25vh;
+    margin-top: 20vh;
+    margin-bottom: 10vh;
+    margin-left: auto;
+    margin-right: auto;
+    float: unset;
   }
 
   .project-info__title {
     font-size: 3.6rem;
     line-height: 2.4rem;
-  }
-
-  .project-info__right {
-    margin: 50vh 0 10vh 0;
   }
 
   .about-card__links {
