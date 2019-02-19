@@ -282,6 +282,14 @@ button {
   z-index: -1;
 }
 
+.lost {
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  text-align: center;
+  margin: 10vh 0;
+}
+
 /* ~~~~~ Titles ~~~~~ */
 .title {
   display: -webkit-box;
@@ -351,6 +359,14 @@ button {
 .project-info__title {
   font-size: 7.2rem;
   line-height: 7.2rem;
+}
+
+.lost__title {
+  display: inline-block;
+  font-family: 'Pacifico', cursive;
+  font-size: 1.8rem;
+  color: #333;
+  line-height: normal;
 }
 
 /* ~~~~~ Projects ~~~~~ */
